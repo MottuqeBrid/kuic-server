@@ -29,33 +29,13 @@ app.use(express.urlencoded({ extended: true }));
 // database connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
-      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-      bufferMaxEntries: 0, // Disable mongoose buffering
-      bufferCommands: false, // Disable mongoose buffering
-    });
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("MongoDB connected successfully");
   } catch (err) {
     console.error("MongoDB connection error:", err);
     process.exit(1);
   }
 };
-
-// Handle connection events
-mongoose.connection.on("disconnected", () => {
-  console.log("MongoDB disconnected");
-});
-
-mongoose.connection.on("error", (err) => {
-  console.error("MongoDB error:", err);
-});
-
-mongoose.connection.on("reconnected", () => {
-  console.log("MongoDB reconnected");
-});
 
 connectDB();
 
