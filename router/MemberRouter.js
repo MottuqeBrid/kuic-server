@@ -16,8 +16,13 @@ router.post("/addMember", async (req, res) => {
 });
 
 router.get("/getMembers", async (req, res) => {
+  const query = {};
+  const { Status } = req.query;
+  if (Status) {
+    query.Status = Status;
+  }
   try {
-    const members = await MemberSchema.find();
+    const members = await MemberSchema.find(query);
     res.status(200).json({ members, success: true });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });

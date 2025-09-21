@@ -36,7 +36,7 @@ const memberSchema = new mongoose.Schema(
     },
     Status: {
       type: String,
-      enum: ["Active", "Inactive", "Suspended"],
+      enum: ["Active", "Inactive", "Ex-Member"],
       default: "Active",
     },
     Position: {
