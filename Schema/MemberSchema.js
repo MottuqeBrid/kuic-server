@@ -30,6 +30,10 @@ const memberSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    TimeLine: {
+      type: String,
+      default: "",
+    },
     EndDate: {
       type: Date,
       default: null,
