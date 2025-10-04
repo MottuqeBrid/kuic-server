@@ -16,9 +16,7 @@ router.post("/addGalleryItem", async (req, res) => {
 });
 router.get("/getGalleryItems", async (req, res) => {
   try {
-    const galleryItems = await GallerySchema.find().sort(
-      (a, b) => b.createdAt - a.createdAt
-    );
+    const galleryItems = await GallerySchema.find();
     res.status(200).json({ galleryItems, success: true });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
