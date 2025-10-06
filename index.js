@@ -48,6 +48,9 @@ app.use("/api/members", require("./router/MemberRouter"));
 app.use("/api/events", require("./router/EventsRouter"));
 app.use("/api/faqs", require("./router/FAQsRouter"));
 app.use("/api/gallery", require("./router/GalleryRouter"));
+app.use("/api/carousel", require("./router/CarouselRouter"));
+app.use("/api/messages", require("./router/MessageRouter"));
+app.use("/api/segments", require("./router/SegmentRouter"));
 // Start server only after database connection
 const startServer = async () => {
   try {
